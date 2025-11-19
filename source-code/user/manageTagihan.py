@@ -1,5 +1,12 @@
 # Manajemen Pembayaran & Tagihan
-from utilitas import clear
+from fungsi.utilitas import clear
+
+# dict dummy tagihan
+tagihan = {
+    "November 2025": {"jumlah": 1500000, "status": "Belum Bayar"},
+    "Desember 2025": {"jumlah": 1500000, "status": "Belum Bayar"},
+    "Oktober 2025": {"jumlah": 1500000, "status": "Sudah Bayar"},
+}
 
 # Untuk Sementara Fungsi Fungsi nya Masih Kosong
 def tampilkan_laporan_konfirmasi():
@@ -9,11 +16,23 @@ def tampilkan_laporan_konfirmasi():
     print("=" * 75)
     input("Tekan Enter untuk kembali...")
 
+# aku nambahin fungsi buat liat tagihan mendatang
 def lihat_tagihan_mendatang():
     clear()
     print("=" * 75)
     print("TAGIHAN YANG AKAN DATANG")
     print("=" * 75)
+    
+    # ini buat dibuat kayak struk kebawah atau tetap ke samping kasih tau aja
+    ada_tagihan = False
+    for bulan, data in tagihan.items():
+        if data["status"] == "Belum Bayar":
+            print(f"Bulan: {bulan} | Jumlah: Rp{data['jumlah']:,} | Status: {data['status']}")
+            ada_tagihan = True
+    
+    if not ada_tagihan:
+        print("Tidak ada tagihan yang akan datang.")
+    
     input("Tekan Enter untuk kembali...")
 
 
