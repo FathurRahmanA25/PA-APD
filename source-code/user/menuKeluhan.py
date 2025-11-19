@@ -1,5 +1,5 @@
 # Menu Keluhan 
-from utilitas import clear
+from fungsi.utilitas import clear
 
 # tempat nyimpan sementara aku masih belum tau mau dipakai buat apa
 laporan_keluhan = []
