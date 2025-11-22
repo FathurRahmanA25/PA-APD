@@ -54,9 +54,15 @@ def editStatus():
         print(f"- {username}")
 
     # Masukkan Nama User yang ingin di edit
-    user = input("Masukkan Nama User: ")
+    user = input("Masukkan Nama User: ").strip()
+    if user == "":
+        print("Nama tidak boleh kosong!")
+        input("Tekan Enter untuk kembali...")
+        return
+
     if user not in tagihan:
         print("User tidak ditemukan.")
+        print("Pastikan mengetik sesuai dengan daftar yang tertera")
         input("Tekan Enter untuk kembali...")
         return
 
@@ -72,8 +78,15 @@ def editStatus():
 
     # untuk merubah tagihan di bulan yang sudah lunas
     bulan = input("Masukkan Bulan Tagihan Yang Ingin Diubah (contoh: November 2025): ")
+
+    if bulan == "":
+        print("Bulan Tidak Boleh Kosong!")
+        input("Tekan Enter untuk kembali...")
+        return
+    
     if bulan not in tagihan_user:
         print("Tagihan Untuk Bulan Tersebut Tidak Ditemukan.")
+        print("Pastikan Ketik Bulan Sesuai Contoh Yang Diberikan")
         input("Tekan Enter untuk kembali...")
         return
 
@@ -82,6 +95,18 @@ def editStatus():
         print("Tagihan Ini Sudah Lunas.")
         input("Tekan Enter untuk kembali...")
         return
+    
+    # Konfirmasi apakah ingin melanjutkan perubahan
+    while True:
+        konfirmasi = input("Apakah Anda yakin? (y/n): ").lower()
+
+        if konfirmasi == "y":
+            break
+        elif konfirmasi == "n":
+            print("Perubahan Dibatalkan!")
+            return
+        else:
+            print("Input tidak valid! Harap masukkan y/n.")
 
     # Ubah status menjadi "Sudah Bayar"
     tagihan[user][bulan]["status"] = "Sudah Bayar"
